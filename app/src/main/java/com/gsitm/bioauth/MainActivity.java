@@ -34,8 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         btn.setOnClickListener((view) -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
 
+            //28이상 버전
+            if (Build.VERSION.SDK_INT >= 28) {
+
+                //지문을 사용할수 있는경우
                 if (isSupportBiometricPrompt()) {
                     Signature signature;
                     try {
@@ -59,11 +62,10 @@ public class MainActivity extends AppCompatActivity {
                     CancellationSignal cancellationSignal = getCancellationSignal();
                     BiometricPrompt.AuthenticationCallback authenticationCallback = getAuthenticationCallback();
 
-                    // Show biometric prompt
-                    if (signature != null) {
+
                         Log.i(TAG, "Show biometric prompt");
                         mBiometricPrompt.authenticate(new BiometricPrompt.CryptoObject(signature), cancellationSignal, getMainExecutor(), authenticationCallback);
-                    }
+
                 }
 
             } else{ //FingerPrint사용
