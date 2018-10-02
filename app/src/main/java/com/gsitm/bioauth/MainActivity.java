@@ -70,14 +70,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "인증 실패", Toast.LENGTH_SHORT).show();
                     }
                 });
-
                 mFragment.show(this.getFragmentManager(), "my_fragment");
-
             }
         });
-
     }
-
 
     private boolean isSupportBiometricPrompt() {
         PackageManager packageManager = this.getPackageManager();
